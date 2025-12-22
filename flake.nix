@@ -12,13 +12,26 @@
         url = "github:nix-community/nixvim";
         # If using a stable channel you can use `url = "github:nix-community/nixvim/nixos-<version>"`
     };
+    nixpkgsOld.url = "github:nixos/nixpkgs?ref=nixos-25.05";
   };
 
   outputs =
-    { nixpkgs, home-manager, nixvim, ... }:
+    { nixpkgs, home-manager, nixvim, nixpkgsOld, ... }:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
+      oldPkgs =  import nixpkgsOld {
+	system = system;
+        config = {
+          allowUnfree = true;
+          permittedUnfreePackages = [
+            "stremio-shell"
+          ];
+          permittedInsecurePackages = [
+            "qtwebengine-5.15.19"
+          ];
+        };
+      };
     in
     {
       homeConfigurations."shaswat" = home-manager.lib.homeManagerConfiguration {
@@ -34,6 +47,10 @@
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
+	extraSpecialArgs = {
+	  inherit oldPkgs;
+	};
+
       };
     };
 }

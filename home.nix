@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, oldPkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -24,6 +24,8 @@
     pkgs.viu
     pkgs.chafa
     pkgs.ueberzugpp
+    
+    oldPkgs.stremio
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
