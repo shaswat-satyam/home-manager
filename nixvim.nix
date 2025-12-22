@@ -17,12 +17,23 @@
     plugins.clipboard-image.enable = true;
     plugins.web-devicons.enable = true;
     plugins.mini.enable = true;
+    plugins.mini-move = {
+      enable = true;
+      settings = {
+        options = {
+          reindent_linewise = true;
+        };
+       };
+    };
     plugins.mini.mockDevIcons = true;
     plugins.mini.modules.icons.enable = true;
     plugins.mini-icons.enable = true;
     plugins.mini-icons.mockDevIcons = true;
     plugins.telescope.enable = true;
     plugins.fzf-lua.enable = true;
+    plugins.treesitter = {
+      enable = true;
+    };
     plugins.markview.enable = true;
     plugins.lsp.enable = true;
     plugins.rainbow.enable = true;
@@ -47,6 +58,7 @@
 	    path = "~/Shared/Notes";
 	  }
 	];
+	legacy_commands = false;
       };
     };
     enableMan = true;
