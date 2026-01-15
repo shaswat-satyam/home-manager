@@ -76,8 +76,33 @@
     # EDITOR = "emacs";
   };
 
+  home.file.".local/share/applications/nvim-notes.desktop".text = ''
+  [Desktop Entry]
+  Name=Notes 
+  Comment=Open notes in Neovim
+  Exec=kitty nvim /home/Shared/Notes
+  Type=Application
+  Categories=Utility;TextEditor;
+  Terminal=false
+'';
+
+
+  # Git Setup
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+    settings = {
+      credential.helper = "${pkgs.git.override {withLibsecret = true;}}/bin/git-credential-libsecret";
+      push = { autoSetupRemote = true; };
+    };
+    settings = {
+      init.defaultBranch = "main";
+    };
+  };
+
 
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
 }
