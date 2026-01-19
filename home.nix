@@ -80,7 +80,7 @@
   [Desktop Entry]
   Name=Notes 
   Comment=Open notes in Neovim
-  Exec=kitty nvim /home/Shared/Notes
+  Exec=kitty --directory=~/Shared/Notes nvim .
   Type=Application
   Categories=Utility;TextEditor;
   Terminal=false
@@ -92,6 +92,10 @@
     enable = true;
     lfs.enable = true;
     settings = {
+      user = {
+        name = "Shaswat Satyam";
+        email = "0892928+shaswat-satyam@users.noreply.github.com";
+      };
       credential.helper = "${pkgs.git.override {withLibsecret = true;}}/bin/git-credential-libsecret";
       push = { autoSetupRemote = true; };
     };

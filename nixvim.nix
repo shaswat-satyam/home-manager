@@ -11,13 +11,14 @@
     };
     defaultEditor = true;
     vimdiffAlias = true;
-    plugins.lualine.enable = true;
-    plugins.leetcode.enable = true;
-    plugins.colorful-menu.enable = true;
-    plugins.clipboard-image.enable = true;
-    plugins.web-devicons.enable = true;
-    plugins.mini.enable = true;
-    plugins.mini-move = {
+    plugins={
+    lualine.enable = true;
+    leetcode.enable = true;
+    colorful-menu.enable = true;
+    clipboard-image.enable = true;
+    web-devicons.enable = true;
+    mini.enable = true;
+    mini-move = {
       enable = true;
       settings = {
         options = {
@@ -25,26 +26,26 @@
         };
        };
     };
-    plugins.mini.mockDevIcons = true;
-    plugins.mini.modules.icons.enable = true;
-    plugins.mini-icons.enable = true;
-    plugins.mini-icons.mockDevIcons = true;
-    plugins.telescope.enable = true;
-    plugins.fzf-lua.enable = true;
-    plugins.treesitter = {
+    mini.mockDevIcons = true;
+    mini.modules.icons.enable = true;
+    mini-icons.enable = true;
+    mini-icons.mockDevIcons = true;
+    telescope.enable = true;
+    fzf-lua.enable = true;
+    treesitter = {
       enable = true;
     };
-    plugins.markview.enable = true;
-    plugins.lsp.enable = true;
-    plugins.rainbow.enable = true;
-    plugins.cmp = {
+    markview.enable = true;
+    lsp.enable = true;
+    rainbow.enable = true;
+    cmp = {
       enable = true;
       autoEnableSources = true;
       settings.sources = [
         {name = "nvim_lsp";}
       ];
     };
-    plugins.obsidian = {
+    obsidian = {
       enable = true;
       settings = {
         completion = {
@@ -61,12 +62,20 @@
 	legacy_commands = false;
       };
     };
+    };
+
     enableMan = true;
-    colorschemes.catppuccin.enable = true;
-    colorschemes.catppuccin.settings.transparent_background = true;
-    colorschemes.catppuccin.settings.show_end_of_buffer = true;
-    clipboard.register = "unnamedplus";
-    clipboard.providers.pbcopy.enable = true;
+    colorschemes={
+        catppuccin={
+            enable = true;
+            settings.transparent_background = true;
+            settings.show_end_of_buffer = true;
+        };
+    };
+    clipboard={
+        register = "unnamedplus";
+        providers.pbcopy.enable = true;
+    };
 
     dependencies = {
       efm-langserver.enable = true;
