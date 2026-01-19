@@ -13,6 +13,8 @@
         # If using a stable channel you can use `url = "github:nix-community/nixvim/nixos-<version>"`
     };
     nixpkgsOld.url = "github:nixos/nixpkgs?ref=nixos-25.05";
+
+    stylix.url = "github:danth/stylix";
   };
 
   outputs =
