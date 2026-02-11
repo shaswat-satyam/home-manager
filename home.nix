@@ -36,9 +36,39 @@
     # # You can also create simple shell scripts directly inside your
     # # configuration. For example, this adds a command 'my-hello' to your
     # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
+
+    (pkgs.writeShellScriptBin "edithome" ''
+      nvim ~/.config/home-manager/
+      echo "Updating Home Manager"
+      home-manager switch
+    '')
+
+    (pkgs.writeShellScriptBin "jrnl" ''
+      VAULT=~/Shared/Notes
+      cd "$VAULT"
+      nvim +"Obsidian dailies"
+    '')
+
+    (pkgs.writeShellScriptBin "notes" ''
+      VAULT=~/Shared/Notes
+      cd $VAULT
+      nvim .
+    '')
+ 
+
+    (pkgs.writeShellScriptBin "editconf" ''
+      set -e
+
+      FLAKE="/etc/nixos"
+      HOST=$(hostname)
+
+      sudo -v
+
+      sudo nvim $FLAKE/configuration.nix
+
+      echo "Rebuilding flake for $HOST..."
+      sudo nixos-rebuild switch 
+    '')
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -73,18 +103,45 @@
   #  /etc/profiles/per-user/shaswat/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    # EDITOR = "vi";
+    BROWSER = "firefox";
+    TERMINAL = "kitty";
+  };
+  xdg.terminal-exec = {
+    enable = true;
+    settings = {
+      default = [
+        "kitty.desktop"
+      ];
+    };
   };
 
   home.file.".local/share/applications/nvim-notes.desktop".text = ''
   [Desktop Entry]
   Name=Notes 
   Comment=Open notes in Neovim
-  Exec=kitty --directory=~/Shared/Notes nvim .
+  Exec=notes
   Type=Application
   Categories=Utility;TextEditor;
-  Terminal=false
+  Terminal=true
+  '';
+
+  home.file.".local/share/applications/jrnl.desktop".text = ''
+  [Desktop Entry]
+  Name=jrnl
+  Comment=Create/Edit a Journal Entry
+  Exec=jrnl
+  Type=Application
+  Categories=Utility;TextEditor;
+  Terminal=true
 '';
+
+# Bash CMD to create a new obsidian daily Notes
+programs.bash = {
+  enable = true;
+};
+
+
 
 
   # Git Setup

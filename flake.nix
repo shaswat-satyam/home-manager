@@ -13,12 +13,10 @@
         # If using a stable channel you can use `url = "github:nix-community/nixvim/nixos-<version>"`
     };
     nixpkgsOld.url = "github:nixos/nixpkgs?ref=nixos-25.05";
-
-    stylix.url = "github:danth/stylix";
   };
 
   outputs =
-    { nixpkgs, home-manager, nixvim, nixpkgsOld, ... }:
+    { nixpkgs, home-manager, nixvim, nixpkgsOld, ... }@inputs:
     let
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
