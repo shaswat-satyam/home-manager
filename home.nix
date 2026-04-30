@@ -44,13 +44,13 @@
     '')
 
     (pkgs.writeShellScriptBin "jrnl" ''
-      VAULT=~/Shared/Notes
+      VAULT=~/Notes
       cd "$VAULT"
       nvim +"Obsidian dailies"
     '')
 
     (pkgs.writeShellScriptBin "notes" ''
-      VAULT=~/Shared/Notes
+      VAULT=~/Notes
       cd $VAULT
       nvim .
     '')

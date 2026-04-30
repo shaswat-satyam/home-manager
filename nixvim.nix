@@ -21,7 +21,7 @@
       number = true;
       cursorline = true;
       signcolumn = "yes";
-      scrolloff = 8;
+      scrolloff = 4;
       sidescrolloff = 5;
 
       # search
@@ -82,7 +82,10 @@
       treesitter = {
         enable = true;
       };
-      markview.enable = true;
+      markview = {
+        enable = true;
+        settings.preview.modes = ["n"];
+      };
       lsp = {
         enable = true;
         servers = {
@@ -90,7 +93,7 @@
           htmx.enable = true;
           tailwindcss.enable = true;
           pylsp.enable = true;
-          rubocop.enable = true;
+          # rubocop.enable = true;
           texlab.enable = true;
           nixd.enable = true;
           rust_analyzer = {
@@ -101,11 +104,17 @@
           ts_ls.enable = true;
           cssls.enable = true;
           jsonls.enable = true;
-          sqls.enable = true;
-          zls.enable = true;
+          # sqls.enable = true;
+          # zls.enable = true;
         };
       };
       rainbow.enable = true;
+      image = {
+        enable = true;
+        autoLoad = true;
+        # auto_render = true;
+      };
+      img-clip.enable = true;
       cmp = {
         enable = true;
         autoEnableSources = true;
@@ -131,6 +140,10 @@
             {
               name = "Second Brain";
               path = "~/Shared/Notes";
+            }
+            {
+              name = "Shared Second Brain";
+              path = "~/Notes";
             }
           ];
           legacy_commands = false;
