@@ -1,7 +1,7 @@
 {pkgs, ... }:
 {
   programs.nixvim = {
-    enable = true;
+    enable = false;
     viAlias = true;
     vimAlias = true;
     globals.mapleader = " ";
@@ -90,11 +90,11 @@
         enable = true;
         servers = {
           html.enable = true;
-          htmx.enable = true;
+          # htmx.enable = true;
           tailwindcss.enable = true;
           pylsp.enable = true;
-          # rubocop.enable = true;
-          texlab.enable = true;
+          rubocop.enable = true;
+          # texlab.enable = true;
           nixd.enable = true;
           rust_analyzer = {
             enable = true;
@@ -108,6 +108,7 @@
           # zls.enable = true;
         };
       };
+      nvim-tree.enable = true;
       rainbow.enable = true;
       image = {
         enable = true;
