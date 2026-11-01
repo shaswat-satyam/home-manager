@@ -24,6 +24,7 @@
     pkgs.viu
     pkgs.chafa
     pkgs.ueberzugpp
+    pkgs.marksman
     
     oldPkgs.stremio
 
@@ -137,9 +138,9 @@
 '';
 
 # Bash CMD to create a new obsidian daily Notes
-programs.bash = {
-  enable = true;
-};
+  programs.bash = {
+    enable = true;
+  };
 
 
 

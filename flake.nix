@@ -41,6 +41,7 @@
         modules = [
           ./home.nix
           ./nixvim.nix
+          ./darkman.nix
           nixvim.homeModules.nixvim
         ];
 
